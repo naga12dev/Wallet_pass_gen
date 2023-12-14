@@ -25,15 +25,21 @@ app.post('/generatePass', (req, res) => {
     ],
   };
 
-  const passPath = __dirname + '/public/pass.pkpass';
-  createPass(passData, passPath);
+  const passPath = __dirname + '/public/Test.pkpass';
+  // createPass(passData, passPath);
 
-  res.json({ passUrl: '/pass.pkpass' });
+const filePath = '/Users/hnerella@amgen.com/Downloads/pkpass-generator/walletPass_gen/public/Test.pass/pass.json';
+
+updateOrganizationName(filePath, userName.toString());
+
+  tffff();
+  res.json({ passUrl: '/Test.pkpass' });
 });
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
+
   
 function createPass(passData, passPath) {
   const manifest = {};
@@ -95,4 +101,63 @@ function createSignature(manifest, files) {
 // const manifest = { /* your manifest data */ };
 // const files = [/* your file objects with content */];
 // createSignature(manifest, files);
+
+//////////////////
+function tffff() {
+  const { exec } = require('child_process');
+
+  // Replace 'yourExecutable.exe' with the actual path to your executable
+  const executablePath = '/Users/hnerella@amgen.com/Downloads/pkpass-generator/walletPass_gen/signpass';
+  
+  // Replace 'yourArguments' with any command-line arguments your executable requires
+  const arguments = '-p /Users/hnerella@amgen.com/Downloads/pkpass-generator/walletPass_gen/public/Test.pass';
+  
+  // Execute the command
+  exec(`${executablePath} ${arguments}`, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error: ${error.message}`);
+      return;
+    }
+    
+    console.log(`stdout: ${stdout}`);
+    console.error(`stderr: ${stderr}`);
+  });
+  
+}
+
+// const fs = require('fs');
+
+function updateOrganizationName(filePath, newOrganizationName) {
+  // Read the JSON file
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading the file:', err);
+      return;
+    }
+
+    try {
+      // Parse the JSON data
+      const json = JSON.parse(data);
+
+      // Update organizationName
+      json.logoText = newOrganizationName;
+
+      // Convert the updated JSON back to a string
+      const updatedJsonString = JSON.stringify(json, null, 2);
+
+      // Write the updated JSON back to the file
+      fs.writeFile(filePath, updatedJsonString, 'utf8', (err) => {
+        if (err) {
+          console.error('Error writing to the file:', err);
+          return;
+        }
+
+        console.log('OrganizationName updated successfully!');
+      });
+    } catch (parseError) {
+      console.error('Error parsing JSON:', parseError);
+    }
+  });
+}
+
 

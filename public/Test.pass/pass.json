@@ -1,0 +1,41 @@
+{
+  "formatVersion": 1,
+  "passTypeIdentifier": "pass.com.amgen.repatha",
+  "teamIdentifier": "Z3294SRLVK",
+  "serialNumber": "gT6zrHkaW",
+  "webServiceURL": "https://example.com/passes/",
+  "authenticationToken": "vxwxd7J8AlNNFPS8k0a0FfUFtq0ewzFdc",
+  "locations": [
+    {
+      "longitude": -122.3748889,
+      "latitude": 37.6189722
+    }
+  ],
+  "barcode": {
+    "message": "123456789",
+    "format": "PKBarcodeFormatPDF417",
+    "messageEncoding": "iso-8859-1"
+  },
+  "organizationName": "Test Test Test",
+  "description": "Amgen Co-Pay Card",
+  "logoText": "Localhost",
+  "foregroundColor": "rgb(255, 8, 0)",
+  "backgroundColor": "rgb(35, 41, 122)",
+  "storeCard": {
+    "primaryFields": [
+      {
+        "key": "balance",
+        "label": "remaining balance",
+        "value": 21.75,
+        "currencyCode": "USD"
+      }
+    ],
+    "auxiliaryFields": [
+      {
+        "key": "Doctor Info",
+        "label": "Co-pay Card",
+        "value": "123456789"
+      }
+    ]
+  }
+}
