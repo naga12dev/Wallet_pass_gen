@@ -18,7 +18,7 @@
   },
   "organizationName": "Test Test Test",
   "description": "Amgen Co-Pay Card",
-  "logoText": "Localhost",
+  "logoText": "Dont Test",
   "foregroundColor": "rgb(255, 8, 0)",
   "backgroundColor": "rgb(35, 41, 122)",
   "storeCard": {
