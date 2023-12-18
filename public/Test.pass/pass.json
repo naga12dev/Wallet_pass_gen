@@ -18,14 +18,14 @@
   },
   "organizationName": "Test Test Test",
   "description": "Amgen Co-Pay Card",
-  "logoText": "Dont Test",
+  "logoText": "fjgh",
   "foregroundColor": "rgb(255, 8, 0)",
   "backgroundColor": "rgb(35, 41, 122)",
   "storeCard": {
     "primaryFields": [
       {
         "key": "balance",
-        "label": "remaining balance",
+        "label": "34",
         "value": 21.75,
         "currencyCode": "USD"
       }

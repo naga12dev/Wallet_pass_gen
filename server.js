@@ -30,7 +30,7 @@ app.post('/generatePass', (req, res) => {
 
 const filePath = '/Users/hnerella@amgen.com/Downloads/pkpass-generator/walletPass_gen/public/Test.pass/pass.json';
 
-updateOrganizationName(filePath, userName.toString());
+updateOrganizationName(filePath, userName.toString(), coPay);
 
   tffff();
   res.json({ passUrl: '/Test.pkpass' });
@@ -127,7 +127,7 @@ function tffff() {
 
 // const fs = require('fs');
 
-function updateOrganizationName(filePath, newOrganizationName) {
+function updateOrganizationName(filePath, newOrganizationName, newLabel) {
   // Read the JSON file
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
@@ -141,6 +141,14 @@ function updateOrganizationName(filePath, newOrganizationName) {
 
       // Update organizationName
       json.logoText = newOrganizationName;
+
+      if (json.storeCard && json.storeCard.primaryFields && json.storeCard.primaryFields.length > 0) {
+        json.storeCard.primaryFields[0].label = newLabel;
+      } else {
+        console.error('Error: Store card or primaryFields not found in the JSON.');
+        callback(new Error('Invalid JSON structure'));
+        return;
+      }
 
       // Convert the updated JSON back to a string
       const updatedJsonString = JSON.stringify(json, null, 2);
